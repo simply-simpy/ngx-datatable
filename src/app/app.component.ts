@@ -3,14 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-light filter-button" id="input1" ngbDropdownToggle>Select an option</button>
-      <div ngbDropdownMenu aria-labelledby="inputmethod">
-        <button ngbDropdownItem *ngFor="let column of columns" (click)="sort(column.prop)">
-          {{ column.prop }}
-        </button>
-      </div>
-    </div>
     <div class="devices-controls">
       <mat-form-field class="devices-sort" appearance="fill">
         <mat-label>Sort by</mat-label>
