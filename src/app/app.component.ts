@@ -3,11 +3,19 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-light filter-button" id="input1" ngbDropdownToggle>Select an option</button>
+      <div ngbDropdownMenu aria-labelledby="inputmethod">
+        <button ngbDropdownItem *ngFor="let column of columns" (click)="sort(column.prop)">
+          {{ column.prop }}
+        </button>
+      </div>
+    </div>
     <div>
       <ngx-datatable
         [rows]="rows"
         [columns]="columns"
-        [sorts]="sorts"
+
 
       >
       </ngx-datatable>
@@ -22,5 +30,11 @@ export class AppComponent {
   ];
   columns = [{ prop: 'name' }, { name: 'Gender' }, { name: 'Company' }];
   // sorts = [{ prop: 'name', dir: 'desc' }];
-  sorts = [{ prop: 'company', dir: 'asc' }];
+  // sorts = [{ prop: 'company', dir: 'desc' }];
+  // tslint:disable-next-line:typedef
+  sort(prop) {
+    // @ts-ignore
+    this.rows.sort((a, b) => a[prop].localeCompare(b[prop], 'en', { numeric: true }));
+    this.rows = [...this.rows];
+  }
 }
