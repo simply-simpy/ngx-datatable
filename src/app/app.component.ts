@@ -32,8 +32,6 @@ export class AppComponent {
     { name: 'Molly', gender: 'Female', company: 'Burger King' }
   ];
   columns = [{ prop: 'name' }, { name: 'Gender' }, { name: 'Company' }];
-  // sorts = [{ prop: 'name', dir: 'desc' }];
-  // sorts = [{ prop: 'company', dir: 'desc' }];
   sort(prop: string | number): void {
     // @ts-ignore
     this.rows.sort((a, b) => a[prop].localeCompare(b[prop], 'en', { numeric: true }));
