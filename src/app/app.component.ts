@@ -15,8 +15,6 @@ import { Component } from '@angular/core';
       <ngx-datatable
         [rows]="rows"
         [columns]="columns"
-
-
       >
       </ngx-datatable>
     </div>
@@ -31,8 +29,7 @@ export class AppComponent {
   columns = [{ prop: 'name' }, { name: 'Gender' }, { name: 'Company' }];
   // sorts = [{ prop: 'name', dir: 'desc' }];
   // sorts = [{ prop: 'company', dir: 'desc' }];
-  // tslint:disable-next-line:typedef
-  sort(prop) {
+  sort(prop: string | number): void {
     // @ts-ignore
     this.rows.sort((a, b) => a[prop].localeCompare(b[prop], 'en', { numeric: true }));
     this.rows = [...this.rows];
